@@ -16,7 +16,8 @@
     "matter-js": "^0.14.0",
     "mongoose": "^4.13.7",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

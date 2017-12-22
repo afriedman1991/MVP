@@ -10,9 +10,15 @@ class App extends React.Component {
     }
   }
 
+getaGif() {
+  
+}
+
   render () {
-    return (<div>
-      <h1>Hello world</h1>
+    return (
+      <div>
+        <h1>Welcome to Gif Generator! Click the button below to get a random gif from the internets :3</h1>
+        <button>Get a gif!</button>
       </div>
     )
   }
