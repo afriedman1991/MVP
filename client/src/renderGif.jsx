@@ -1,11 +1,11 @@
 import React from 'react'
 
-const renderGif = (props) {
+const RenderGif = (props) => {
   return (
     <div>
-      <img src=`${props.gif}`/>
+      <img src={props.currentGif}/>
     </div>
   )
 }
 
-export default renderGif;
+export default RenderGif;
