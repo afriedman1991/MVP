@@ -58,13 +58,16 @@ getMyGifs() {
 
   render () {
     return (
-      <div>
-        <h1>Welcome to Gif Generator! Click the button below to get a random gif from the internets :3</h1>
-        <button onClick={this.getaGif}>Get a gif!</button>
-        <button onClick={this.saveaGif}>Save this gif!</button>
-        <button onClick={this.getMyGifs}>Recall my saved gifs!</button>
-        <RenderGif currentGif={this.state.currentGif}/>
-        <GetMyGifs Gifs={this.state.allMyGifs}/>
+      <div className="overlay">
+       <h1 className="mb-3">Welcome to Gif Generator! Click the button below to get a random gif from the internets :3</h1>
+         <span className="input-group-btn">
+             <button className="btn btn-secondary" type="button" onClick={this.getaGif}>Get a gif!</button>
+             <button className="btn btn-secondary" type="button" onClick={this.saveaGif}>Save this gif!</button>
+             <button className="btn btn-secondary" type="button" onClick={this.getMyGifs}>Recall my saved gifs!</button>
+         </span>
+
+         <RenderGif currentGif={this.state.currentGif}/>
+         <GetMyGifs Gifs={this.state.allMyGifs}/>
       </div>
     )
   }
