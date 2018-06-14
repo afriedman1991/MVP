@@ -15,6 +15,13 @@ class App extends React.Component {
     this.getaGif = this.getaGif.bind(this);
     this.saveaGif = this.saveaGif.bind(this);
     this.getMyGifs = this.getMyGifs.bind(this);
+    this.deleteAGif = this.deleteAGif.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.state.currentGif === null) {
+      this.getMyGifs();
+    }
   }
 
 getaGif() {
@@ -55,6 +62,25 @@ getMyGifs() {
   })
 }
 
+deleteAGif(gif) {
+  console.log('VALUE OF E.TARGET:', JSON.stringify(gif.gif));
+  let config = {
+    method: 'delete',
+    url: 'http://localhost:8000/deleteGif',
+    data: {
+      link: gif.gif
+    }
+  }
+  axios(config)
+  .then((res) => {
+    console.log(res.data);
+    this.setState({
+      currentGif: null,
+      allMyGifs: res.data
+    })
+  });
+}
+
 
   render () {
     return (
@@ -67,7 +93,7 @@ getMyGifs() {
          </span>
 
          <RenderGif currentGif={this.state.currentGif}/>
-         <GetMyGifs Gifs={this.state.allMyGifs}/>
+         <GetMyGifs Gifs={this.state.allMyGifs} deleteAGif={this.deleteAGif}/>
       </div>
     )
   }

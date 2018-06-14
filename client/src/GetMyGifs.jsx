@@ -7,8 +7,7 @@ const GifGallery = (props) => {
   return (
     <ul style={ulStyle}>
         {props.Gifs.map((gif, ind) => {
-          console.log(gif);
-          return <li key={ind}><img src={`${gif}`} key={ind}/></li>
+          return <li key={ind}><img src={`${gif}`} key={ind}/><button onClick={() => props.deleteAGif({'gif': gif})}>delete</button></li>
         })}
     </ul>
   )

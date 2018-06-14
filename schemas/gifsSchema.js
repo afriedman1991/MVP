@@ -7,7 +7,7 @@ const gifSchema = mongoose.Schema({
 let Gif = mongoose.model('Gif', gifSchema);
 
 
-const saveNewGif = function(gif) {
+const saveNewGif = (gif) => {
   Gif.find({gifUrl: gif}, (err, docs) => {
     if (docs.length === 0) {
       let gifs = new Gif({gifUrl: gif})
@@ -16,10 +16,22 @@ const saveNewGif = function(gif) {
   })
 };
 
-const getMyGifs = function(cb) {
-  Gif.find({}, function(err, docs) {
+const deleteAGif = (gif, cb) => {
+  Gif.deleteOne({gifUrl: gif}, (err) => {
+    if (err) {
+      cb(err);
+      return;
+    }
+    getMyGifs((gifLinks) => {
+      cb(gifLinks);
+    });
+  });
+}
+
+const getMyGifs = (cb) => {
+  Gif.find({}, (err, docs) => {
     var gifLinks = [];
-    docs.forEach(function(doc) {
+    docs.forEach((doc) => {
       gifLinks.push(doc.gifUrl);
     })
     cb(gifLinks);
@@ -28,3 +40,4 @@ const getMyGifs = function(cb) {
 
 module.exports.saveNewGif = saveNewGif;
 module.exports.getMyGifs = getMyGifs;
+module.exports.deleteAGif = deleteAGif;

@@ -1,6 +1,5 @@
 const axios = require('axios');
 const config = require('../config.js');
-// const request = require('request')
 
 let url = `http://api.giphy.com/v1/gifs/random?format=json=g&api_key=${config.GIPHY_API_KEY}`
 let getRandomGif = (cb) => {
